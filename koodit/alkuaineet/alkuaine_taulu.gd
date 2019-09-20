@@ -1,6 +1,6 @@
 extends Node2D
 
-signal alkuaine_pressed(alkuaine_nimi,alkuaine_merkki,alkuaine_numero,alkuaine_massa)
+signal alkuaine_pressed(alkuaine_nimi,alkuaine_merkki,alkuaine_numero,alkuaine_massa,alkuaine_ryhma,alkuaine_jakso)
 signal alkuaine_mouse_over(alkuaine_numero)
 
 const COLOR_EPAMETALLI=Color(255/255.0,246/255.0,164/255.0)
@@ -19,6 +19,8 @@ var nimi =""
 var numero=-1
 var massa=0.0
 var tyyppi = null
+var jakso=-1
+var ryhma=-1
 
 func _ready():
 	add_to_group("elements")
@@ -30,6 +32,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
+#setters
 func set_merkki(value):
 	merkki=str(value)
 	get_node("merkki").set_text(merkki)
@@ -45,6 +48,13 @@ func set_numero(value):
 func set_massa(value):
 	massa=float(value)
 	get_node("massa").set_text(massa)
+
+func set_jakso(value):
+	jakso=int(value)
+
+func set_ryhma(value):
+	ryhma=int(value)
+
 
 func set_tyyppi(value):
 	tyyppi=value
@@ -65,8 +75,16 @@ func set_color(new_color):
 	get_node("reuna").default_color = new_color.darkened(0.3)
 	
 
+#getters
+
+func get_jakso():
+	return jakso
+
+func get_ryhma():
+	return ryhma
+
 func laheta_signaali_pressed():
-	emit_signal("alkuaine_pressed",nimi,merkki,numero,massa)
+	emit_signal("alkuaine_pressed",nimi,merkki,numero,massa,ryhma,jakso)
 
 func laheta_signaali_mouse_over():
 	emit_signal("alkuaine_mouse_over",numero)

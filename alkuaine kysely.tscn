@@ -1,12 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://teksti_kerays.gd" type="Script" id=1]
-[ext_resource path="res://fonts/Carlito-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Button.gd" type="Script" id=3]
-[ext_resource path="res://jaksollinen_jarjestelma.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/Carlito-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Button.gd" type="Script" id=2]
+[ext_resource path="res://jaksollinen_jarjestelma.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Label
@@ -25,29 +24,31 @@ func _ready():
 
 [node name="alkuaine kysely" type="Node2D"]
 
-[node name="teksti_kerays" type="LineEdit" parent="."]
-visible = false
-margin_right = 259.0
-margin_bottom = 52.0
-script = ExtResource( 1 )
-
-[node name="teksti_naytto" type="Label" parent="."]
-visible = false
-margin_left = 317.0
-margin_top = 17.0
-margin_right = 357.0
-margin_bottom = 33.0
+[node name="teksti_otsikko" type="Label" parent="."]
+margin_left = 1522.49
+margin_top = 297.813
+margin_right = 1711.49
+margin_bottom = 313.813
 custom_fonts/font = SubResource( 1 )
-text = "TEksti"
+text = "Valitse alkuaine, joka kuuluu:"
+script = SubResource( 2 )
+
+[node name="teksti_kysymys" type="Label" parent="."]
+margin_left = 1525.81
+margin_top = 329.945
+margin_right = 1714.81
+margin_bottom = 345.945
+custom_fonts/font = SubResource( 1 )
+text = "pääjaksoon 6 ja ryhmään 2"
 script = SubResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-visible = false
-margin_left = 6.0
-margin_top = 73.0
-margin_right = 106.0
-margin_bottom = 123.0
-script = ExtResource( 3 )
+margin_left = 1763.12
+margin_top = 303.522
+margin_right = 1863.12
+margin_bottom = 353.522
+text = "Aarvo uusi"
+script = ExtResource( 2 )
 
-[node name="jaksollinen_jarjestelma" parent="." instance=ExtResource( 4 )]
+[node name="jaksollinen_jarjestelma" parent="." instance=ExtResource( 3 )]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

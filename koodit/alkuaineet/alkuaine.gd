@@ -4,6 +4,8 @@ var nimi=""
 var merkki=""
 var numero=-1
 var massa=0.0
+var jakso=-1
+var ryhma=-1
 
 var texture_path='res://kuvat/alkuaineet/'
 var extension='.png'

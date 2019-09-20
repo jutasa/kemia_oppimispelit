@@ -5,6 +5,8 @@ const MERKKI=1
 const NIMI=2
 const MASSA=3
 const TYYPPI=4
+const JAKSO=5
+const RYHMA=6
 
 func _ready():
 	find_sprite_and_write_data()
@@ -27,7 +29,7 @@ func find_sprite_and_write_data():
 		if file.eof_reached():
 			break
 			
-		var colums=line.split(":")
+		var colums=line.split(";")
 		for node in element_nodes:
 			var element_number=int(node.name.substr(0,3))
 			if element_number==int(colums[NUMERO]):
@@ -36,6 +38,8 @@ func find_sprite_and_write_data():
 				node.set_nimi(colums[NIMI])
 				node.set_massa(colums[MASSA])
 				node.set_tyyppi(colums[TYYPPI])
+				node.set_jakso(colums[JAKSO])
+				node.set_ryhma(colums[RYHMA])
 				break
 	file.close()
 	print("file closed")
